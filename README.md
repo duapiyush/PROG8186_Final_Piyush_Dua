@@ -1,5 +1,9 @@
 # Car After-Market Parts E-commerce Website
 
+- Student name: Piyush Dua
+- Student Number: 8980841
+- Date: 19-07-2024
+
 This project is an e-commerce website for car after-market parts, built using the Model-View-Controller (MVC) architectural pattern. The website allows users to browse products by category, view product details, add items to their cart, and place orders. Administrators have the ability to manage product categories, products, and orders.
 
 ## Technology Stack
