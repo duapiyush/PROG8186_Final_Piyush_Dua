@@ -14,7 +14,6 @@ This project is an e-commerce website for car after-market parts, built using th
 - Sequelize ORM
 - SQLite database
 - Express Session (for user authentication)
-duapiyush729@gmail.com
 
 
 ## Features
