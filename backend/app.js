@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require('cors');
+
 
 var indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -17,9 +19,9 @@ db.sequelize.sync()
     .then(() => console.log('Database & tables created!'))
     .catch(err => console.log('Error:', err));
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.use(cors({
+  origin: 'http://localhost:3001'
+}));
 
 app.use(logger('dev'));
 app.use(express.json());
