@@ -39,10 +39,10 @@ const ProductCard = ({ product }) => {
 
     return (
         <div className={`border rounded-lg p-4 relative overflow-hidden transition hover:shadow-xl transform hover:scale-105 ${cardBackgroundColor} ${textColor}`}>
-            <div className="relative mb-4 cursor-pointer" onClick={() =>  navigate(`/product/${product._id}`)}>
+            <div className="relative mb-4 cursor-pointer" onClick={() =>  navigate(`/product/${product.id}`)}>
                 <div className={`absolute inset-0 ${isDarkTheme ? 'bg-black opacity-50' : 'bg-white opacity-0'} rounded-lg`}></div>
                 <img
-                    src={product.image}
+                    src={`../${product.name}.jpg`}
                     alt={product.name}
                     className="w-full h-32 object-cover rounded-lg z-50"
                 />
@@ -50,10 +50,10 @@ const ProductCard = ({ product }) => {
 
             <div>
                 <h3 className={`text-lg font-bold mb-2 ${textColor} cursor-pointer`}
-                    onClick={() =>  navigate(`/product/${product._id}`)}
+                    onClick={() =>  navigate(`/product/${product.id}`)}
                 >{product.name}</h3>
                 <p className={`mb-2 ${isDarkTheme ? 'text-gray-300' : 'text-gray-700'}`}
-                   onClick={() =>  navigate(`/product/${product._id}`)}
+                   onClick={() =>  navigate(`/product/${product.id}`)}
                 >{product.description}</p>
                 <p className={`font-bold text-xl ${isDarkTheme ? 'text-yellow-300' : 'text-blue-500'}`}>${product.pricing}</p>
             </div>

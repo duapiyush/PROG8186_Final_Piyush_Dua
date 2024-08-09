@@ -20,7 +20,7 @@ db.sequelize.sync()
     .catch(err => console.log('Error:', err));
 
 app.use(cors({
-  origin: 'http://localhost:3001'
+  origin: 'http://localhost:3000'
 }));
 
 app.use(logger('dev'));

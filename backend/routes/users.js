@@ -2,6 +2,22 @@ const express = require('express');
 const router = express.Router();
 const { User } = require('../model');
 
+//login
+router.post('/login', async (req, res) => {
+  try {
+    const {email, password} = req.body;
+    const user = await User.findOne({
+      where: {email, password},
+    });
+    if (user) {
+      res.json(user);
+    } else {
+      res.status(404).json({message: 'User not found'});
+    }
+  } catch (error) {
+    res.status(500).json({message: error.message});
+  }});
+
 // Get all users
 router.get('/', async (req, res) => {
   try {

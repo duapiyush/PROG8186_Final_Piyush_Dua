@@ -17,7 +17,7 @@ const Header = () => {
 
     return (
         <header className={`p-4 flex justify-between items-center ${themeClass}`}>
-            <div className="text-2xl font-bold">E - Mart</div>
+            <div className="text-2xl font-bold">AIRXPRS</div>
             <nav className="mt-4">
                 <Link to="/" className="mr-4">Home</Link>
                 {!auth.isLoggedIn ?  <Link to="/login">Login</Link> : <Link to="/login" onClick={handleLogout}>Logout</Link>}

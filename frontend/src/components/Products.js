@@ -20,7 +20,7 @@ const Products = () => {
 
 
     const fetchProducts =() => {
-        fetch('http://localhost:5012/product')
+        fetch('http://localhost:5012/api/products')
         .then(res => res.json())
         .then(json => setProducts(json))
     }
@@ -33,7 +33,7 @@ const Products = () => {
     return (
         <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 ${cardBackgroundColor} ${textColor}`}>
             {products.map((product) => (
-                <ProductCard key={product._id} product={product} />
+                <ProductCard key={product.id} product={product} />
             ))}
 
             <button onClick={toggleCart} className="fixed bottom-8 right-8 bg-blue-500 text-white px-4 py-2 rounded-full">

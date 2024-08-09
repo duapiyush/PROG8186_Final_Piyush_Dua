@@ -1,10 +1,11 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {context} from '../context';
 
 const AccountEdit = () => {
     const {auth, theme} = useContext(context);
     const [password, setPassword] = useState('');
     const [shippingAddress, setShippingAddress] = useState(auth.user ? auth.user.shippingAddress : '');
+    const [products, setProducts] = useState([]);
 
     const handlePasswordChange = (e) => setPassword(e.target.value);
     const handleShippingAddressChange = (e) => setShippingAddress(e.target.value);
@@ -14,11 +15,18 @@ const AccountEdit = () => {
     };
 
 
+    const fetchProducts =() => {
+        fetch('http://localhost:5012/api/products')
+            .then(res => res.json())
+            .then(json =>
+                setProducts(json.slice(0, 2))
+            )
+    }
 
-    const purchasedItems = [
-        { id: 1, name: 'Item 1', price: '$10', image: '../images/Image1.jpeg' },
-        { id: 2, name: 'Item 2', price: '$20', image: '../images/Image1.jpeg' },
-    ];
+
+    useEffect(() => {
+        fetchProducts()
+    }, []);
 
     return (
         <div className="flex">
@@ -88,9 +96,9 @@ const AccountEdit = () => {
             <div className="w-1/3 mx-auto mx-24">
                 <h2 className="text-2xl font-bold mb-4 text-gray-800 py-4 flex justify-center">Purchase History</h2>
                 <div className="grid grid-cols-1 gap-4">
-                    {purchasedItems.map(item => (
+                    {products.map(item => (
                         <div key={item.id} className="bg-white rounded-lg shadow-lg p-4 flex flex-col items-center">
-                            <img src={item.image} alt={item.name} className="w-full h-32 object-cover rounded-lg mb-2"/>
+                            <img src={`../${item.name}.jpg`} alt={item.name} className="w-full h-32 object-cover rounded-lg mb-2"/>
                             <h3 className="text-lg font-bold text-gray-800">{item.name}</h3>
                             <p className="text-gray-600">{item.price}</p>
                         </div>

@@ -20,13 +20,13 @@ const ProductDetail = () => {
 
     const [product, setProduct] = useState({});
     const fetchProduct =() => {
-        fetch(`http://localhost:5012/product/${productId}`)
+        fetch(`http://localhost:5012/api/products/${productId}`)
         .then(res => res.json())
         .then(json => setProduct(json))
     }
 
     const fetchComments =() => {
-        fetch(`http://localhost:5012/comment/${productId}`)
+        fetch(`http://localhost:5012/api/comment/${productId}`)
         .then(res => res.json())
         .then(json => setProductComments(json))
     }
@@ -55,7 +55,7 @@ const ProductDetail = () => {
             text: comment
         };
 
-        fetch('http://localhost:5012/comment', {
+        fetch('http://localhost:5012/api/comment', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const ProductDetail = () => {
         const itemToAdd = {
             id: product.id,
             name: product.name,
-            price: product.pricing,
+            price: product.price,
             image: product.image,
             quantity: 1,
         };
@@ -94,12 +94,12 @@ const ProductDetail = () => {
         <div className={`min-h-screen flex flex-col items-center justify-center ${containerClass}`}>
             <div className="flex w-full max-w-3xl">
                 <div className="w-1/2 p-6">
-                    <img src={product.image} alt={product.name} className="w-full h-auto rounded-lg" />
+                    <img src={`../${product.name}.jpg`} alt={product.name} className="w-full h-auto rounded-lg" />
                 </div>
                 <div className={`w-1/2 p-6 ${itemContainerClass} ${containerClass}`}>
                     <h1 className="text-2xl font-bold mb-4">{product.name}</h1>
                     <p className="mb-4">{product.description}</p>
-                    <p className="font-bold text-xl mb-4">${product?.pricing}</p>
+                    <p className="font-bold text-xl mb-4">${product?.price}</p>
                     <button className="bg-blue-500 text-white px-4 py-2 rounded-full mb-4" onClick={handleAddToCart}>
                         Add to Cart
                     </button>

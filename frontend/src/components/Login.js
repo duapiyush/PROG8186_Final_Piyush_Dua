@@ -18,7 +18,7 @@ const LoginForm = () => {
             alert('Both fields are required');
             return;
         }
-        fetch('http://localhost:5012/user/login', {
+        fetch('http://localhost:5012/api/users/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ const LoginForm = () => {
             .then(data => {
                 if (data) {
                     auth.setIsLoggedIn(true);
-                    auth.setUser({...data.user, id: data.user._id});
+                    auth.setUser({...data.user, id: data.id});
                     navigate('/');
                 } else {
                     console.error('Login failed:', data.message);

@@ -64,7 +64,7 @@ const ShoppingCart = () => {
                                     <button className="text-lg font-bold" onClick={() => handleIncrement(item.id)}>+</button>
                                 </div>
                             </td>
-                            <td>${+item.pricing}</td>
+                            <td>${+item.price}</td>
                             <td>${getTotalPrice(0, +item.price)}</td>
                             <td>
                                 <button className="text-red-500 font-bold" onClick={() => handleRemoveFromCart(item.id)}>Remove</button>
