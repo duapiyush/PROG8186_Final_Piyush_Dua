@@ -55,7 +55,7 @@ const ProductCard = ({ product }) => {
                 <p className={`mb-2 ${isDarkTheme ? 'text-gray-300' : 'text-gray-700'}`}
                    onClick={() =>  navigate(`/product/${product.id}`)}
                 >{product.description}</p>
-                <p className={`font-bold text-xl ${isDarkTheme ? 'text-yellow-300' : 'text-blue-500'}`}>${product.pricing}</p>
+                <p className={`font-bold text-xl ${isDarkTheme ? 'text-yellow-300' : 'text-blue-500'}`}>${product.price}</p>
             </div>
 
             <div className="flex items-center mt-2">

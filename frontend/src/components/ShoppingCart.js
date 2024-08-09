@@ -14,6 +14,7 @@ const ShoppingCart = () => {
     };
 
     const getTotalPrice = (quantity, price) => {
+        debugger;
         return (quantity * price).toFixed(2);
     };
 
@@ -54,7 +55,7 @@ const ShoppingCart = () => {
                     {cart.cartItems.map((item) => (
                         <tr key={item.id}>
                             <td>
-                                <img src={item.image} alt={item.name} className="w-10 h-10 object-cover rounded-full" />
+                                <img src={`../${item.name}.jpg`} alt={item.name} className="w-10 h-10 object-cover rounded-full" />
                             </td>
                             <td>{item.name}</td>
                             <td>
@@ -65,7 +66,7 @@ const ShoppingCart = () => {
                                 </div>
                             </td>
                             <td>${+item.price}</td>
-                            <td>${getTotalPrice(0, +item.price)}</td>
+                            <td>${getTotalPrice(item.quantity, +item.price)}</td>
                             <td>
                                 <button className="text-red-500 font-bold" onClick={() => handleRemoveFromCart(item.id)}>Remove</button>
                             </td>

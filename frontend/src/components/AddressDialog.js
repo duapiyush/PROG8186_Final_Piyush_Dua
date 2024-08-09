@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { context } from '../context/index';
+import Notification from "./Notification";
 
 const AddressDialog = ({ setIsDialogOpen }) => {
     const { theme } = useContext(context);
@@ -14,6 +15,7 @@ const AddressDialog = ({ setIsDialogOpen }) => {
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
     const [postalCode, setPostalCode] = useState('');
+    const [showNotification, setShowNotification] = useState(false);
 
     const handleClose = () => {
         setIsDialogOpen(false);
@@ -27,7 +29,11 @@ const AddressDialog = ({ setIsDialogOpen }) => {
             state,
             postalCode
         });
-        setIsDialogOpen(false);
+        setShowNotification(true);
+        setTimeout(() => {
+            setIsDialogOpen(false);
+        }, 4000);
+
     };
 
     return (
@@ -93,6 +99,12 @@ const AddressDialog = ({ setIsDialogOpen }) => {
                     </button>
                 </div>
             </div>
+            {showNotification && (
+                <Notification
+                    message="Item shipped to address!"
+                    onClose={() => setShowNotification(false)}
+                />
+            )}
         </div>
     );
 };
